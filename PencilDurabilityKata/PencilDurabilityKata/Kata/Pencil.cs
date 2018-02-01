@@ -6,37 +6,51 @@ namespace PencilDurabilityKata.Kata
         private const int MAX = int.MaxValue;
         private const String NON_POSITIVE_DURABILITY_MESSAGE = "Cannot initialize pencil with non-positive durability.";
         private const String NEGATIVE_LENGTH_MESSAGE = "Cannot initialize pencil with negative length.";
+        private const String NEGATIVE_ERASER_DURABILITY_MESSAGE = "Cannot initialize pencil with negative durability.";
 
         private const char EMPTY = ' ';
         private const char NEWLINE = '\n';
 
         private int _initialDurability;
-        private int _durability;
-
+        private int _pointDurability;
         private int _length;
+        private int _eraserDurability;
 
         public Pencil()
         {
-            _durability = _initialDurability = MAX;
+            _pointDurability = _initialDurability = MAX;
             _length = MAX;
+            _eraserDurability = MAX;
         }
 
         public Pencil(int initialDurability)
         {
             checkInitialDurabilityValid(initialDurability);
-            _durability = _initialDurability = initialDurability;
+            _pointDurability = _initialDurability = initialDurability;
             _length = MAX;
+            _eraserDurability = MAX;
         }
 
         public Pencil(int initialDurability, int length)
         {
             checkInitialDurabilityValid(initialDurability);
-            if(length < 0)
-            {
-                throw new ArgumentException(NEGATIVE_LENGTH_MESSAGE);
-            }
-            _durability = _initialDurability = initialDurability;
+            checkInitialLengthValid(length);
+            _pointDurability = _initialDurability = initialDurability;
             _length = length;
+            _eraserDurability = MAX;
+        }
+
+        public Pencil(int initialDurability, int length, int eraserDurability)
+        {
+            checkInitialDurabilityValid(initialDurability);
+            checkInitialLengthValid(length);
+            if(eraserDurability <= 0)
+            {
+                throw new ArgumentException(NEGATIVE_ERASER_DURABILITY_MESSAGE);
+            }
+            _pointDurability = _initialDurability = initialDurability;
+            _length = length;
+            _eraserDurability = eraserDurability;
         }
 
         public void Write(Paper paper, String text)
@@ -50,7 +64,7 @@ namespace PencilDurabilityKata.Kata
             if(_length > 0)
             {
                 _length--;
-                _durability = _initialDurability;
+                _pointDurability = _initialDurability;
             }
         }
 
@@ -74,6 +88,14 @@ namespace PencilDurabilityKata.Kata
             }
         }
 
+        private void checkInitialLengthValid(int initialLength)
+        {
+            if (initialLength < 0)
+            {
+                throw new ArgumentException(NEGATIVE_LENGTH_MESSAGE);
+            }
+        }
+
         private String applyDurabilityToWriting(String text)
         {
             char[] chars = text.ToCharArray();
@@ -81,17 +103,17 @@ namespace PencilDurabilityKata.Kata
             {
                 if(chars[i] != EMPTY && chars[i] != NEWLINE)
                 {
-                    if (_durability <= 0)
+                    if (_pointDurability <= 0)
                     {
                         chars[i] = EMPTY;
                     }
                     else if(Char.IsUpper(chars[i]))
                     {
-                        _durability -= 2;
+                        _pointDurability -= 2;
                     }
                     else
                     {
-                        _durability--;
+                        _pointDurability--;
                     }
                 }
             }
