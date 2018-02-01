@@ -24,7 +24,7 @@ namespace PencilDurabilityKata.Kata
         {
             if(initialDurability <= 0)
             {
-                throw new ArgumentException("Cannot initialize pencil with non-positive durability.");
+                throw new ArgumentException(NON_POSITIVE_DURABILITY_MESSAGE);
             }
             _durability = _initialDurability = initialDurability;
             _length = MAX;
