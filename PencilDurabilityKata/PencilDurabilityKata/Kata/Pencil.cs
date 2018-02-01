@@ -71,13 +71,31 @@ namespace PencilDurabilityKata.Kata
         public void Erase(Paper paper, String word)
         {
             int index = paper.Text.ToUpper().LastIndexOf(word.ToUpper(), StringComparison.CurrentCulture);
-            if(index >= 0)
+            if(index >= 0 && _eraserDurability > 0)
             {
-                String erasedString = new String(EMPTY, word.Length);
-                String former = paper.Text.Substring(0, index);
-                String latter = paper.Text.Substring(index + word.Length);
-                paper.Text = former + erasedString + latter;
+                if(_eraserDurability < word.Length)
+                {
+                    paper.Text = createErasedString(paper.Text,
+                                                    index + word.Length - _eraserDurability,
+                                                    index + word.Length,
+                                                    _eraserDurability);
+                    _eraserDurability = 0;
+                }
+                else
+                {
+                    paper.Text = createErasedString(paper.Text, index, index + word.Length, word.Length);
+                    _eraserDurability -= word.Length;
+                }
+
             }
+        }
+
+        private String createErasedString(String text, int startIndex, int endIndex, int erasedAmount)
+        {
+            String erasedString = new String(EMPTY, erasedAmount);
+            String former = text.Substring(0, startIndex);
+            String latter = text.Substring(endIndex);
+            return String.Concat(former, erasedString, latter);
         }
 
         private void checkInitialDurabilityValid(int initialDurability)
