@@ -4,6 +4,8 @@ namespace PencilDurabilityKata.Kata
     public class Pencil
     {
         private const int MAX = int.MaxValue;
+        private const String NON_POSITIVE_DURABILITY_MESSAGE = "Cannot initialize pencil with non-positive durability.";
+
         private const char EMPTY = ' ';
         private const char NEWLINE = '\n';
 
@@ -20,6 +22,10 @@ namespace PencilDurabilityKata.Kata
 
         public Pencil(int initialDurability)
         {
+            if(initialDurability <= 0)
+            {
+                throw new ArgumentException("Cannot initialize pencil with non-positive durability.");
+            }
             _durability = _initialDurability = initialDurability;
             _length = MAX;
         }
