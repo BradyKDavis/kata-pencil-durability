@@ -37,5 +37,11 @@ namespace PencilDurabilityTests
             sut.Write(paper, "currently incomplete.");
             Assert.AreEqual("This sentence is currently incomplete.", paper.Text);
         }
+
+        [Test]
+        public void TestThatWhenPencilIsGivenNegativeDurabilityArgumentExceptionThrown()
+        {
+            Assert.Throws<ArgumentException>(() =>new Pencil(-1));
+        }
     }
 }
