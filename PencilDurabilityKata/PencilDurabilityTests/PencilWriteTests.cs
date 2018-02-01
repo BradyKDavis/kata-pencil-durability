@@ -24,11 +24,12 @@ namespace PencilDurabilityTests
             Assert.AreEqual(sentence, paper.Text);
         }
 
+        [Test]
         public void TestThatWhenPencilWritesStringToPaperWithTextThenThatTextIsAppended()
         {
             paper = new Paper("This sentence is ");
             sut.Write(paper, "currently incomplete.");
-            Assert.AreEqual("This sentence is currently incomplete.");
+            Assert.AreEqual("This sentence is currently incomplete.", paper.Text);
         }
     }
 }
