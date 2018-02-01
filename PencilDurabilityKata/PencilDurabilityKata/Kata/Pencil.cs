@@ -7,6 +7,7 @@ namespace PencilDurabilityKata.Kata
         private const String NEGATIVE_DURABILITY_MESSAGE = "Cannot initialize pencil with negative durability.";
         private const String NEGATIVE_LENGTH_MESSAGE = "Cannot initialize pencil with negative length.";
         private const String NEGATIVE_ERASER_DURABILITY_MESSAGE = "Cannot initialize pencil with negative durability.";
+        private const String NEGATIVE_EDIT_POSITION_MESSAGE = "Cannot edit; position must not be null.";
 
         private const char EMPTY = ' ';
         private const char NEWLINE = '\n';
@@ -92,6 +93,10 @@ namespace PencilDurabilityKata.Kata
 
         public void Edit(Paper paper, String text, int position)
         {
+            if(position < 0)
+            {
+                throw new ArgumentException(NEGATIVE_EDIT_POSITION_MESSAGE);
+            }
             String former = paper.Text.Substring(0, position);
             String latter = paper.Text.Substring(position + text.Length);
             paper.Text = String.Concat(former, text, latter);
