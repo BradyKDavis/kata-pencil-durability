@@ -9,7 +9,7 @@ namespace PencilDurabilityKata.Kata
 
         public void Write(Paper paper, String text)
         {
-            paper.Text = text;
+            paper.Text = paper.Text + text;
         }
     }
 }

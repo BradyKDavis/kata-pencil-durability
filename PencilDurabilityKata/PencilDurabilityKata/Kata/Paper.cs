@@ -9,5 +9,10 @@ namespace PencilDurabilityKata.Kata
         {
             Text = "";
         }
+
+        public Paper(String initialText)
+        {
+            Text = initialText;
+        }
     }
 }
