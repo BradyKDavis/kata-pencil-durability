@@ -63,5 +63,11 @@ namespace PencilDurabilityTests
             sut.Write(paper, "ABC");
             Assert.AreEqual("AB ", paper.Text);
         }
+
+        [Test]
+        public void TestThatWhenPencilIsGivenNegativeDurabilityArgumentExceptionThrown()
+        {
+            Assert.Throws<ArgumentException>(() => new Pencil(-1));
+        }
     }
 }
