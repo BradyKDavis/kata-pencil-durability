@@ -3,18 +3,18 @@ namespace PencilDurabilityKata.Kata
 {
     public class Pencil
     {
-        private const uint MAX_DURABILITY = uint.MaxValue;
+        private const int MAX_DURABILITY = int.MaxValue;
         private const char EMPTY = ' ';
         private const char NEWLINE = '\n';
 
-        private uint _durability;
+        private int _durability;
 
         public Pencil()
         {
             _durability = MAX_DURABILITY;
         }
 
-        public Pencil(uint initialDurability)
+        public Pencil(int initialDurability)
         {
             _durability = initialDurability;
         }
@@ -32,7 +32,7 @@ namespace PencilDurabilityKata.Kata
             {
                 if(chars[i] != EMPTY && chars[i] != NEWLINE)
                 {
-                    if (_durability == 0)
+                    if (_durability <= 0)
                     {
                         chars[i] = EMPTY;
                     }
