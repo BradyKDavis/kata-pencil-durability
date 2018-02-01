@@ -39,5 +39,14 @@ namespace PencilDurabilityTests
             sut.Edit(paper, "xxxxxx", 4);
             Assert.AreEqual("Thisx@@x@xtest sentence.", paper.Text);
         }
+
+        [Test]
+        public void TestEditWithInsufficientPointDurabilityOnlyEditsUpToDurability()
+        {
+            sut = new Pencil(5);
+            paper = new Paper("We will edit over this paper.");
+            sut.Edit(paper, "FooBar", 7);
+            Assert.AreEqual("We willF@@@t over this paper.", paper.Text);
+        }
     }
 }
