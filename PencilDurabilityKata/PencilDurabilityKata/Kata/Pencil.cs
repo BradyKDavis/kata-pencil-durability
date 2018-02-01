@@ -4,7 +4,7 @@ namespace PencilDurabilityKata.Kata
     public class Pencil
     {
         private const int MAX = int.MaxValue;
-        private const String NON_POSITIVE_DURABILITY_MESSAGE = "Cannot initialize pencil with non-positive durability.";
+        private const String NEGATIVE_DURABILITY_MESSAGE = "Cannot initialize pencil with negative durability.";
         private const String NEGATIVE_LENGTH_MESSAGE = "Cannot initialize pencil with negative length.";
         private const String NEGATIVE_ERASER_DURABILITY_MESSAGE = "Cannot initialize pencil with negative durability.";
 
@@ -82,9 +82,9 @@ namespace PencilDurabilityKata.Kata
 
         private void checkInitialDurabilityValid(int initialDurability)
         {
-            if (initialDurability <= 0)
+            if (initialDurability < 0)
             {
-                throw new ArgumentException(NON_POSITIVE_DURABILITY_MESSAGE);
+                throw new ArgumentException(NEGATIVE_DURABILITY_MESSAGE);
             }
         }
 
