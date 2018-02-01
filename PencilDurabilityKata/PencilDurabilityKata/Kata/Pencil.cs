@@ -3,21 +3,31 @@ namespace PencilDurabilityKata.Kata
 {
     public class Pencil
     {
-        private const int MAX_DURABILITY = int.MaxValue;
+        private const int MAX = int.MaxValue;
         private const char EMPTY = ' ';
         private const char NEWLINE = '\n';
 
         private int _initialDurability;
         private int _durability;
 
+        private int _length;
+
         public Pencil()
         {
-            _durability = _initialDurability = MAX_DURABILITY;
+            _durability = _initialDurability = MAX;
+            _length = MAX;
         }
 
         public Pencil(int initialDurability)
         {
             _durability = _initialDurability = initialDurability;
+            _length = MAX;
+        }
+
+        public Pencil(int initialDurability, int length)
+        {
+            _durability = _initialDurability = initialDurability;
+            _length = length;
         }
 
         public void Write(Paper paper, String text)
@@ -28,7 +38,13 @@ namespace PencilDurabilityKata.Kata
 
         public void Sharpen()
         {
-            _durability = _initialDurability;
+            if(_length > 0)
+            {
+                _length--;
+                _durability = _initialDurability;
+            }
+
+
         }
 
         private String applyDurabilityToWriting(String text)
