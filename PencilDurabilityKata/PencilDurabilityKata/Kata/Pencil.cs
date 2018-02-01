@@ -33,7 +33,7 @@ namespace PencilDurabilityKata.Kata
                 {
                     chars[i] = EMPTY;
                 }
-                else
+                else if(chars[i] != EMPTY)
                 {
                     _durability--;
                 }
