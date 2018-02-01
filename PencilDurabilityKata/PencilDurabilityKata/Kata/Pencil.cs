@@ -56,11 +56,13 @@ namespace PencilDurabilityKata.Kata
 
         public void Erase(Paper paper, String word)
         {
-            int index = paper.Text.IndexOf(word, StringComparison.CurrentCulture);
+            int index = paper.Text.LastIndexOf(word, StringComparison.CurrentCulture);
             if(index >= 0)
             {
                 String erasedString = new String(EMPTY, word.Length);
-                paper.Text = paper.Text.Replace(word, erasedString);
+                String former = paper.Text.Substring(0, index);
+                String latter = paper.Text.Substring(index + word.Length);
+                paper.Text = former + erasedString + latter;
             }
         }
 
