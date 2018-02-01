@@ -4,6 +4,7 @@ namespace PencilDurabilityKata.Kata
     public class Pencil
     {
         private const uint MAX_DURABILITY = uint.MaxValue;
+        private char EMPTY = ' ';
 
         private uint _durability;
 
@@ -19,7 +20,25 @@ namespace PencilDurabilityKata.Kata
 
         public void Write(Paper paper, String text)
         {
-            paper.Text = paper.Text + text;
+            String appliedText = applyDurabilityToWriting(text);
+            paper.Text = paper.Text + appliedText;
+        }
+
+        private String applyDurabilityToWriting(String text)
+        {
+            char[] chars = text.ToCharArray();
+            for (uint i = 0; i < chars.Length; i++)
+            {
+                if(_durability == 0)
+                {
+                    chars[i] = EMPTY;
+                }
+                else
+                {
+                    _durability--;
+                }
+            }
+            return new String(chars);
         }
     }
 }
