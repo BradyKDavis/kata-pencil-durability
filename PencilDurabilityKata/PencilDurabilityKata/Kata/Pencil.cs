@@ -23,16 +23,14 @@ namespace PencilDurabilityKata.Kata
 
         public Pencil(int initialDurability)
         {
-            if(initialDurability <= 0)
-            {
-                throw new ArgumentException(NON_POSITIVE_DURABILITY_MESSAGE);
-            }
+            checkInitialDurabilityValid(initialDurability);
             _durability = _initialDurability = initialDurability;
             _length = MAX;
         }
 
         public Pencil(int initialDurability, int length)
         {
+            checkInitialDurabilityValid(initialDurability);
             if(length < 0)
             {
                 throw new ArgumentException(NEGATIVE_LENGTH_MESSAGE);
@@ -54,8 +52,14 @@ namespace PencilDurabilityKata.Kata
                 _length--;
                 _durability = _initialDurability;
             }
+        }
 
-
+        private void checkInitialDurabilityValid(int initialDurability)
+        {
+            if (initialDurability <= 0)
+            {
+                throw new ArgumentException(NON_POSITIVE_DURABILITY_MESSAGE);
+            }
         }
 
         private String applyDurabilityToWriting(String text)
