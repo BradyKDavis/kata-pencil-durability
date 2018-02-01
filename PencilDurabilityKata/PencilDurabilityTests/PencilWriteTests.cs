@@ -16,6 +16,12 @@ namespace PencilDurabilityTests
             paper = new Paper();
         }
 
+        [SetUp]
+        public void init()
+        {
+            paper = new Paper();
+        }
+
         [Test]
         public void TestThatWhenPencilWritesStringToEmptyPaperThePaperTextIsWritten()
         {
