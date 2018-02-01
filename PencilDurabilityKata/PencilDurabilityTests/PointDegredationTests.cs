@@ -41,6 +41,14 @@ namespace PencilDurabilityTests
         }
 
         [Test]
+        public void TestPencilWithNotEnoughPointToWriteSentenceWillNotCountNewlines()
+        {
+            sut = new Pencil(8);
+            sut.Write(paper, "this \n is \n sparta");
+            Assert.AreEqual("this \n is \n sp    ", paper.Text);
+        }
+
+        [Test]
         public void TestPencilWithNotEnoughPointToWriteSentenceWillDoublyCountCapitals()
         {
             sut = new Pencil(8);
