@@ -1,14 +1,26 @@
 ﻿using NUnit.Framework;
 using System;
+using PencilDurabilityKata.Kata;
 namespace PencilDurabilityTests
 {
     [TestFixture]
-    public class Test
+    public class PencilWriteTests
     {
-        [Test]
-        public void TestCase()
+        private Pencil sut;
+
+        private Paper paper;
+
+        public PencilWriteTests()
         {
-            Assert.Fail();
+            sut = new Pencil();
+            paper = new Paper();
+        }
+        [Test]
+        public void AssertThatWhenPencilWritesStringToEmptyPaperThePaperAppendsString()
+        {
+            String sentence = "foobar";
+            sut.Write(paper, sentence);
+            Assert.AreEqual(sentence, paper.Text);
         }
     }
 }
