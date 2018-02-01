@@ -11,6 +11,7 @@ namespace PencilDurabilityKata.Kata
 
         private const char EMPTY = ' ';
         private const char NEWLINE = '\n';
+        private const char CONFLICT = '@';
 
         private int _initialDurability;
         private int _pointDurability;
@@ -99,7 +100,31 @@ namespace PencilDurabilityKata.Kata
             }
             String former = paper.Text.Substring(0, position);
             String latter = paper.Text.Substring(position + text.Length);
-            paper.Text = String.Concat(former, text, latter);
+            String editSpace = paper.Text.Substring(position, text.Length);
+            String edit = createEditedString(editSpace, text);
+            paper.Text = String.Concat(former, edit, latter);
+        }
+
+        private String createEditedString(String original, String edit)
+        {
+            char[] originalArr = original.ToCharArray();
+            char[] editArr = edit.ToCharArray();
+            char[] finalArr = (char[])editArr.Clone();
+            for (int i = 0; i < originalArr.Length && i < editArr.Length; i++)
+            {
+                if (originalArr[i] != EMPTY)
+                {
+                    if (editArr[i] != EMPTY)
+                    {
+                        finalArr[i] = CONFLICT;
+                    }
+                    else
+                    {
+                        finalArr[i] = originalArr[i];
+                    }
+                }
+            }
+            return new string(finalArr); 
         }
 
         private String createErasedString(String text, int startIndex, int endIndex, int erasedAmount)
