@@ -15,6 +15,7 @@ namespace PencilDurabilityTests
             sut = new Pencil();
             paper = new Paper();
         }
+
         [Test]
         public void AssertThatWhenPencilWritesStringToEmptyPaperThePaperAppendsString()
         {
