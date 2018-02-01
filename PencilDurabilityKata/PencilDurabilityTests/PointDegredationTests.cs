@@ -15,6 +15,7 @@ namespace PencilDurabilityTests
             paper = new Paper();
         }
 
+        [Test]
         public void TestPencilWithEnoughPointToWriteSentenceWillWriteSentence()
         {
             sut = new Pencil(5);
