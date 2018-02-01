@@ -17,11 +17,18 @@ namespace PencilDurabilityTests
         }
 
         [Test]
-        public void AssertThatWhenPencilWritesStringToEmptyPaperThePaperAppendsString()
+        public void TestThatWhenPencilWritesStringToEmptyPaperThePaperTextIsWritten()
         {
             String sentence = "foobar";
             sut.Write(paper, sentence);
             Assert.AreEqual(sentence, paper.Text);
+        }
+
+        public void TestThatWhenPencilWritesStringToPaperWithTextThenThatTextIsAppended()
+        {
+            paper = new Paper("This sentence is ");
+            sut.Write(paper, "currently incomplete.");
+            Assert.AreEqual("This sentence is currently incomplete.");
         }
     }
 }
