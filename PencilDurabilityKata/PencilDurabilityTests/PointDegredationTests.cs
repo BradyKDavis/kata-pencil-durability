@@ -31,5 +31,13 @@ namespace PencilDurabilityTests
             sut.Write(paper, "foobar");
             Assert.AreEqual("foo   ", paper.Text);
         }
+
+        [Test]
+        public void TestPencilWithNotEnoughPointToWriteSentenceWillNotCountSpaces()
+        {
+            sut = new Pencil(8);
+            sut.Write(paper, "this is writing");
+            Assert.AreEqual("this is wr     ", paper.Text);
+        }
     }
 }
