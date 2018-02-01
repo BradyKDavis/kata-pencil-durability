@@ -55,5 +55,13 @@ namespace PencilDurabilityTests
             sut.Write(paper, "Hello World!");
             Assert.AreEqual("Hello W     ", paper.Text);
         }
+
+        [Test]
+        public void TestPencilWithNotEnoughPointToWriteSentenceWritesLastCapitalIfAtEndDurability()
+        {
+            sut = new Pencil(3);
+            sut.Write(paper, "ABC");
+            Assert.AreEqual("AB ", paper.Text);
+        }
     }
 }
