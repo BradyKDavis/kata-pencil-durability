@@ -54,6 +54,16 @@ namespace PencilDurabilityKata.Kata
             }
         }
 
+        public void Erase(Paper paper, String word)
+        {
+            int index = paper.Text.IndexOf(word, StringComparison.CurrentCulture);
+            if(index >= 0)
+            {
+                String erasedString = new String(EMPTY, word.Length);
+                paper.Text = paper.Text.Replace(word, erasedString);
+            }
+        }
+
         private void checkInitialDurabilityValid(int initialDurability)
         {
             if (initialDurability <= 0)
