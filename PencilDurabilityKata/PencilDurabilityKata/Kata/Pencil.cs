@@ -35,7 +35,14 @@ namespace PencilDurabilityKata.Kata
                 }
                 else if(chars[i] != EMPTY)
                 {
-                    _durability--;
+                    if(Char.IsUpper(chars[i]))
+                    {
+                        _durability -= 2;
+                    }
+                    else
+                    {
+                        _durability--;
+                    }
                 }
             }
             return new String(chars);
