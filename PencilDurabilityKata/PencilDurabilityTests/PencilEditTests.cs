@@ -31,5 +31,13 @@ namespace PencilDurabilityTests
             sut.Write(paper, "foobar");
             Assert.Throws<ArgumentException>(() => sut.Edit(paper, "", -1));
         }
+
+        [Test]
+        public void TestEditOverCharactersPlacesConflictSymbolsOverCharacters()
+        {
+            sut.Write(paper, "This is a test sentence.");
+            sut.Edit(paper, "xxxxxx", 4);
+            Assert.AreEqual("Thisx@@x@xtest sentence.", paper.Text);
+        }
     }
 }
