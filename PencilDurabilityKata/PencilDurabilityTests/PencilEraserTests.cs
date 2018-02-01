@@ -33,5 +33,14 @@ namespace PencilDurabilityTests
             sut.Erase(paper, "wood");
             Assert.AreEqual("How much wood would a woodchuck chuck if a woodchuck could chuck     ?", paper.Text);
         }
+
+        [Test]
+        public void WhenPencilErasesWordFromPaperItErasesTheWordIfItIsCapitalizedInTheSentence()
+        {
+            sut = new Pencil();
+            sut.Write(paper, "Food is good.");
+            sut.Erase(paper, "food");
+            Assert.AreEqual("     is good.", paper.Text);
+        }
     }
 }
