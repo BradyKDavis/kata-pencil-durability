@@ -90,6 +90,13 @@ namespace PencilDurabilityKata.Kata
             }
         }
 
+        public void Edit(Paper paper, String text, int position)
+        {
+            String former = paper.Text.Substring(0, position);
+            String latter = paper.Text.Substring(position + text.Length);
+            paper.Text = String.Concat(former, text, latter);
+        }
+
         private String createErasedString(String text, int startIndex, int endIndex, int erasedAmount)
         {
             String erasedString = new String(EMPTY, erasedAmount);
