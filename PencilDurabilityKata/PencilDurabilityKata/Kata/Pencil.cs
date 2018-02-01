@@ -101,7 +101,8 @@ namespace PencilDurabilityKata.Kata
             String former = paper.Text.Substring(0, position);
             String latter = paper.Text.Substring(position + text.Length);
             String editSpace = paper.Text.Substring(position, text.Length);
-            String edit = createEditedString(editSpace, text);
+            String trueEdit = applyDurabilityToWriting(text);
+            String edit = createEditedString(editSpace, trueEdit);
             paper.Text = String.Concat(former, edit, latter);
         }
 
