@@ -24,5 +24,12 @@ namespace PencilDurabilityTests
             sut.Edit(paper, "Here", 0);
             Assert.AreEqual("Here is some space in which to put a word.", paper.Text);
         }
+
+        [Test]
+        public void TestEditInNegativeIndexThrowsArgumentException()
+        {
+            sut.Write(paper, "foobar");
+            Assert.Throws<ArgumentException>(() => sut.Edit(paper, "", -1));
+        }
     }
 }
