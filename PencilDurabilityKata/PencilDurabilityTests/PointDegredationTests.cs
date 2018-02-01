@@ -71,6 +71,12 @@ namespace PencilDurabilityTests
         }
 
         [Test]
+        public void TestThatWhenPencilIsGivenNegativeDurabilityArgumentExceptionIsThrownAlternate()
+        {
+            Assert.Throws<ArgumentException>(() => new Pencil(-1, 2));
+        }
+
+        [Test]
         public void TestThatWhenPencilIsGivenZeroDurabilityArgumentExceptionThrown()
         {
             Assert.Throws<ArgumentException>(() => new Pencil(0));
