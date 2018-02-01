@@ -30,5 +30,18 @@ namespace PencilDurabilityTests
             sut.Erase(paper, "exceptionally");
             Assert.AreEqual("Exceptio      done.", paper.Text);
         }
+
+        [Test]
+        public void TestThatWhenEraserIsOutOfDurabilityCallsToEraseDoNothing()
+        {
+            sut = new Pencil(int.MaxValue, int.MaxValue, 3);
+            sut.Write(paper, "Did you ever hear the tragedy of Darth Plageius the Wise?");
+            sut.Erase(paper, "did");
+            Assert.AreEqual("    you ever hear the tragedy of Darth Plageius the Wise?", paper.Text);
+            sut.Erase(paper, "you");
+            Assert.AreEqual("    you ever hear the tragedy of Darth Plageius the Wise?", paper.Text);
+        }
+
+
     }
 }
