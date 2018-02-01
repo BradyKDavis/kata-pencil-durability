@@ -21,5 +21,14 @@ namespace PencilDurabilityTests
         {
             Assert.Throws<ArgumentException>(() => sut = new Pencil(int.MaxValue, int.MaxValue, -1));
         }
+
+        [Test]
+        public void TestThatWhenEraserIsOutOfDurabilityItOnlyErasesWhatItCanFromTheRight()
+        {
+            sut = new Pencil(int.MaxValue, int.MaxValue, 5);
+            sut.Write(paper, "Exceptionally done.");
+            sut.Erase(paper, "exceptionally");
+            Assert.AreEqual("Exceptio      done.", paper.Text);
+        }
     }
 }
