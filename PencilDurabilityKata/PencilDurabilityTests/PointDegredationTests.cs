@@ -45,7 +45,7 @@ namespace PencilDurabilityTests
         {
             sut = new Pencil(8);
             sut.Write(paper, "Hello World!");
-            Assert.AreEqual("Hello W    ");
+            Assert.AreEqual("Hello W     ", paper.Text);
         }
     }
 }
