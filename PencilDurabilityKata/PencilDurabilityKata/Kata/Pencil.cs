@@ -4,7 +4,8 @@ namespace PencilDurabilityKata.Kata
     public class Pencil
     {
         private const uint MAX_DURABILITY = uint.MaxValue;
-        private char EMPTY = ' ';
+        private const char EMPTY = ' ';
+        private const char NEWLINE = '\n';
 
         private uint _durability;
 
@@ -29,13 +30,13 @@ namespace PencilDurabilityKata.Kata
             char[] chars = text.ToCharArray();
             for (uint i = 0; i < chars.Length; i++)
             {
-                if(_durability == 0)
+                if(chars[i] != EMPTY && chars[i] != NEWLINE)
                 {
-                    chars[i] = EMPTY;
-                }
-                else if(chars[i] != EMPTY)
-                {
-                    if(Char.IsUpper(chars[i]))
+                    if (_durability == 0)
+                    {
+                        chars[i] = EMPTY;
+                    }
+                    else if(Char.IsUpper(chars[i]))
                     {
                         _durability -= 2;
                     }
