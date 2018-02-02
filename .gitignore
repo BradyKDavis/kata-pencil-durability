@@ -8,7 +8,7 @@
 *.suo
 *.user
 *.userosscache
-#*.sln.docstates
+*.sln.docstates
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
@@ -19,10 +19,10 @@
 [Rr]elease/
 [Rr]eleases/
 x64/
-#x86/
+x86/
 bld/
 [Bb]in/
-#[Oo]bj/
+[Oo]bj/
 [Ll]og/
 
 # Visual Studio 2015/2017 cache/options directory
@@ -288,7 +288,7 @@ paket-files/
 
 # JetBrains Rider
 .idea/
-#*.sln.iml
+*.sln.iml
 
 # CodeRush
 .cr/
