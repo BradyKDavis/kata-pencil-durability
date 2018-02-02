@@ -1,3 +1,21 @@
+## Brady Davis Pencil Durability Kata Submission
+
+Language Used: C#
+
+Technologies used: NUnit, NuGet
+
+##Build:
+*This assumes an installation of .Net and NUnit (ver 3.9) libraries
+
+To Test:
+
+In the folder with PencilDurabilityTests.csproj, run in terminal, e.g on mac, command:
+
+MONO_IOMAP=all nunit-console PencilDurabilityTests.csproj -xml="TestResults.xml"
+
+Test results will be saved to file "TestResults.xml"
+
+
 # Pencil Durability Kata
 The purpose of the Pencil Durability Kata is to write code to simulate, first coarsely and then more faithfully, an ordinary graphite pencil. It includes writing and editing text, point degradation, using the eraser, and sharpening the pencil. The point of this kata is to provide a larger-than-trivial exercise that can be used to practice TDD. A significant portion of the effort will be in determining which tests should be written and, more importantly, written next.
 

@@ -49,7 +49,7 @@ namespace PencilDurabilityTests
             Assert.AreEqual("We willF@@@t over this paper.", paper.Text);
         }
 
-        [Test]
+        [Ignore("Assumed functionality, not within final spec.")] 
         public void TestEditNearEndOfPaperAppendsEditToEnd()
         {
             paper = new Paper("Yaddaa ");
