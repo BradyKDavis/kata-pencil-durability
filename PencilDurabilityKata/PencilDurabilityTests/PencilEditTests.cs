@@ -48,13 +48,5 @@ namespace PencilDurabilityTests
             sut.Edit(paper, "FooBar", 7);
             Assert.AreEqual("We willF@@@t over this paper.", paper.Text);
         }
-
-        [Ignore("Assumed functionality, not within final spec.")] 
-        public void TestEditNearEndOfPaperAppendsEditToEnd()
-        {
-            paper = new Paper("Yaddaa ");
-            sut.Edit(paper, "yadda yadda", 5);
-            Assert.AreEqual("Yadda@adda yadda", paper.Text);
-        }
     }
 }
